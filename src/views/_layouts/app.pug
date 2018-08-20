@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    title Kevlr
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="stylesheet" href="css/app.min.css")
+
+  body
+    include ../_includes/mixins.pug
+    .u-hidden
+      include ../../../dist/images/icons.svg
+            
+    block content
+    
+    script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+    script(src="js/app.js")
