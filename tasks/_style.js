@@ -1,4 +1,5 @@
 import gulp from 'gulp'
+import gulpConfig from './config'
 import autoprefixer from 'gulp-autoprefixer'
 import bounce from './_bounce'
 import cssnano from 'gulp-cssnano'
@@ -10,7 +11,7 @@ import sass from 'gulp-sass'
 import sourcemaps from 'gulp-sourcemaps'
 
 const style = () => {
-  return gulp.src('./src/scss/app.scss')
+  return gulp.src(`${gulpConfig.src}/scss/app.scss`)
     .pipe(plumber({ errorHandler: bounce }))
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -22,11 +23,11 @@ const style = () => {
     .pipe(autoprefixer({
   		cascade: false
     }))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest(`${gulpConfig.dest}/css`))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest(`${gulpConfig.dest}/css`))
 }
 
 export default style

@@ -1,4 +1,5 @@
 import gulp from 'gulp'
+import gulpConfig from './config'
 import bounce from './_bounce'
 import plumber from 'gulp-plumber'
 import webpack from 'webpack'
@@ -24,10 +25,10 @@ const config = {
 }
 
 const scripts = () => {
-  return gulp.src('./src/js/app.js')
+  return gulp.src(`${gulpConfig.src}/js/app.js`)
     .pipe(plumber({ errorHandler: bounce }))
     .pipe(webpackStream(config), webpack)
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest(`${gulpConfig.dest}/js`))
 }
 
 export default scripts
