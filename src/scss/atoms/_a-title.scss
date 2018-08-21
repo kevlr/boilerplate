@@ -1,0 +1,36 @@
+.a-title {
+  margin: 0;
+  font-family: $font-family-heading;
+  color: $color-0-darkest;
+}
+
+@each $title-name, $properties in $titles {
+  .a-title--#{$title-name} {
+    @include title($title-name);
+  }
+}
+
+.a-title--section {
+  @include title('L');
+  position: relative;
+  text-align: center;
+  padding-bottom: 4rem;
+  max-width: 60rem;
+  margin: 4rem auto 5rem;
+
+  @include media-query('M') {
+    margin-bottom: 8rem;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: .3rem;
+    width: 10.5rem;
+    background-color: $color-1;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

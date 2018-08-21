@@ -1,0 +1,66 @@
+@mixin media-query($from, $to: false) {
+  $from-breakpoint: if(type-of($from) == string, map-get($grid-breakpoints, $from), $from);
+
+  @if ($to) {
+    $to-breakpoint: if(type-of($to) == string, map-get($grid-breakpoints, $to), $to);
+
+    @if ($from-breakpoint == 0) {
+      @media only screen and (max-width: $to-breakpoint - em(1px)) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $from-breakpoint) and (max-width: $to-breakpoint - em(1px)) {
+        @content;
+      }
+    }
+  } @else {
+    @if ($from-breakpoint == 0) {
+      @content;
+    } @else {
+      @media only screen and (min-width: $from-breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin title($title-name) {
+  $font-properies: map-get($titles, $title-name);
+
+  @each $property, $value in $font-properies {
+    @include responsive($property, $value);
+  }
+}
+
+@mixin button-reset() {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0;
+  color: inherit;
+}
+
+@mixin responsive($property, $values) {
+  @if (type-of($values) != map) {
+    #{$property}: $values;
+  } @else {
+    @each $name, $value in $values {
+      @include media-query($name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px;
+  padding: 0 !important;
+  border: 0 !important;
+}

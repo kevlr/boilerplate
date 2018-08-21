@@ -1,0 +1,34 @@
+//
+// Media query breakpoints
+// ---------------------------------------
+
+$breakpoints: (
+  'S': em(680px),
+  'M': em(920px)
+);
+
+//
+// Grid settings
+// ---------------------------------------
+
+$grid-columns: 12;
+$grid-breakpoints: (
+  'base': 0,
+  'S': em(480px),
+  'M': em(768px),
+  'L': em(1024px),
+);
+$grid-column-gap: (
+  'base': 2rem,
+  'M': 3rem,
+);
+$grid-row-gap: $grid-column-gap;
+$grid-max-width: (
+  'base': 140rem,
+);
+
+//
+// Container settings
+// ---------------------------------------
+
+$app-min-width: 30rem;

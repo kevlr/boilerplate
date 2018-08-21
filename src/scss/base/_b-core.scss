@@ -1,0 +1,60 @@
+html {
+  height: 100%;
+  font-size: 62.5%;
+  font-size: calc(1em * 0.625);
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: $color-text;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+strong,
+b {
+  font-weight: $font-weight-bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-normal;
+}
+
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: $color-2;
+}

@@ -1,0 +1,17 @@
+@each $name, $breakpoint in $grid-breakpoints {
+  $suffix: if($breakpoint == 0, '', '-#{$name}');
+
+  @include media-query($name) {
+    .u-hidden#{$suffix} {
+     display: none !important;
+    }
+
+    .u-visible#{$suffix} {
+      display: block !important;
+    }
+  }
+}
+
+.u-visuallyHidden {
+  @include visually-hidden;
+}

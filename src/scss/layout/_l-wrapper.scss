@@ -1,0 +1,29 @@
+/** ======================================
+ * Atom : Wrapper
+ * ======================================= */
+
+.l-wrapper {
+  display: block;
+  margin: 0 auto;
+
+  @each $name, $max-width in $grid-max-width {
+    @include media-query($name) {
+      max-width: $max-width;
+    }
+  }
+
+  @each $name, $gap in $grid-column-gap {
+    @include media-query($name) {
+      padding-left: $gap;
+      padding-right: $gap;
+    }
+  }
+}
+
+.l-wrapper--S {
+  max-width: 120rem;
+}
+
+.l-wrapper--L {
+  max-width: 168rem;
+}

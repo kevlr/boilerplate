@@ -1,0 +1,28 @@
+.a-icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  svg {
+    fill: currentColor;
+    display: block;
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+}
+
+.a-icon--inline {
+  display: inline-flex;
+  align-items: center;
+  height: 1em;
+  line-height: 1;
+
+  svg {
+    margin-top: -0.6em;
+    margin-bottom: -0.4em;
+  }
+
+  &:not(:first-child),
+  & + * {
+    margin-left: .8rem;
+  }
+}

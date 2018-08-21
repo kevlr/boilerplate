@@ -1,0 +1,19 @@
+.m-form {
+  margin: 0;
+}
+
+.m-form--inline {
+  margin-top: -1rem;
+  margin-left: -2rem;
+
+  > * {
+    max-width: calc(100% - 2rem);
+    vertical-align: middle;
+    margin-top: 1rem;
+    margin-left: 2rem;
+  }
+}
+
+.m-form--center {
+  text-align: center;
+}
