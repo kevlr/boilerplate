@@ -9,6 +9,7 @@
     "babel-preset-env": "^1.7.0",
     "beeper": "^1.1.1",
     "browser-sync": "^2.24.6",
+    "chalk": "^2.4.1",
     "del": "^3.0.0",
     "eslint": "^5.4.0",
     "eslint-loader": "^2.1.0",
@@ -31,7 +32,9 @@
   },
   "scripts": {
     "dev": "gulp dev --require babel-register --gulpfile tasks",
-    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks"
+    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
+    "docs:dev": "DOCS=true gulp docsDev --require babel-register --gulpfile tasks",
+    "docs:build": "DOCS=true NODE_ENV=production gulp docsBuild --require babel-register --gulpfile tasks"
   },
   "babel": {
     "presets": [

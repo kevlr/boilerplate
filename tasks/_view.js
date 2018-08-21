@@ -1,22 +1,30 @@
 import gulp from 'gulp'
-import gulpConfig from './config'
+import gulpConfig from '../config'
 import bounce from './_bounce'
+import chalk from 'chalk'
 import changed from 'gulp-changed'
 import plumber from 'gulp-plumber'
 import pug from 'gulp-pug'
 
-const asset = () => {
+const path = process.env.DOCS ? {
+  src: gulpConfig.path.src,
+  dest: gulpConfig.path.docs,
+} : gulpConfig.path
+
+const view = () => {
   return gulp.src([
-      `${gulpConfig.src}/views/**/*.pug`,
-      `!${gulpConfig.src}/views/_**/*`
+      `${path.src}/views/**/*.pug`,
+      `!${path.src}/views/_**/*`
     ])
     .pipe(plumber({ errorHandler: bounce }))
-    .pipe(changed(`${gulpConfig.dest}`))
-    .pipe(pug({ layout: false }))
+    .pipe(changed(`${path.dest}`))
+    .pipe(pug({
+      basedir: `${path.src}/views`
+    }))
     .on('error', (error) => {
-      console.error(error.message)
+      console.error(chalk.red(error.message))
     })
-    .pipe(gulp.dest(`${gulpConfig.dest}`))
+    .pipe(gulp.dest(`${path.dest}`))
 }
 
-export default asset
+export default view

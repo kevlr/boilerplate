@@ -6,14 +6,23 @@ html(lang="en")
     title Kevlr
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
-    link(rel="stylesheet" href="css/app.min.css")
+    link(rel="stylesheet" href="/css/app.min.css")
+    link(rel="stylesheet" href="/css/docs.min.css")
 
   body
     include ../_includes/mixins.pug
     .u-hidden
-      include ../../../app/images/icons.svg
+      include ../../../../app/images/icons.svg
+      
+    nav
+      a(href="/") Documentation
+      ul
+        each component in components
+          - var slug = component.split('.pug')[0];
+          li
+            a(href=`/components/${slug}.html`)= slug
             
     block content
     
     script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
-    script(src="js/app.js")
+    script(src="/js/app.js")

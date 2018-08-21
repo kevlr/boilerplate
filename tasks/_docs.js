@@ -2,10 +2,12 @@ import gulp from 'gulp'
 import gulpConfig from '../config'
 import autoprefixer from 'gulp-autoprefixer'
 import bounce from './_bounce'
+import chalk from 'chalk'
+import changed from 'gulp-changed'
 import cssnano from 'gulp-cssnano'
+import fs from 'fs'
 import plumber from 'gulp-plumber'
-import postcss from 'gulp-postcss'
-import postcssNormalize from 'postcss-normalize'
+import pug from 'gulp-pug'
 import rename from 'gulp-rename'
 import sass from 'gulp-sass'
 import sourcemaps from 'gulp-sourcemaps'
@@ -15,16 +17,33 @@ const path = process.env.DOCS ? {
   dest: gulpConfig.path.docs,
 } : gulpConfig.path
 
-const style = () => {
-  return gulp.src(`${path.src}/scss/app.scss`)
+const docs = () => {
+  return gulp.src([
+      `${path.src}/docs/views/**/*.pug`,
+      `!${path.src}/docs/views/**/_**/*`
+    ])
+    .pipe(plumber({ errorHandler: bounce }))
+    .pipe(changed(`${path.dest}`))
+    .pipe(pug({
+      basedir: `${path.src}/docs/views`,
+      data: {
+        icons: fs.readdirSync(`${path.src}/icons/`),
+        components: fs.readdirSync(`${path.src}/docs/views/components/`)
+      }
+    }))
+    .on('error', (error) => {
+      console.error(chalk.red(error.message))
+    })
+    .pipe(gulp.dest(`${path.dest}`))
+}
+
+const docsStyle = () => {
+  return gulp.src(`${path.src}/docs/scss/docs.scss`)
     .pipe(plumber({ errorHandler: bounce }))
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'expanded'
     }).on('error', sass.logError))
-    .pipe(postcss([
-      postcssNormalize()
-    ]))
     .pipe(autoprefixer({
   		cascade: false
     }))
@@ -35,4 +54,4 @@ const style = () => {
     .pipe(gulp.dest(`${path.dest}/css`))
 }
 
-export default style
+export { docs, docsStyle }

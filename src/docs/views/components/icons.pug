@@ -1,0 +1,5 @@
+extends /_layouts/docs.pug
+
+block content
+  each icon in icons
+    +icon(icon.split('.svg')[0])
