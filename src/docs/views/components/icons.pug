@@ -1,5 +1,12 @@
 extends /_layouts/docs.pug
 
 block content
+  - const example = icons[0].split('.svg')[0]
+  
+  +code
+    +icon(example)
+  
   each icon in icons
-    +icon(icon.split('.svg')[0])
+    - const name = icon.split('.svg')[0]
+    +icon(name)
+    p= name

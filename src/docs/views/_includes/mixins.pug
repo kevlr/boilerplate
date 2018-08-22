@@ -2,3 +2,9 @@ mixin icon(name)
   span.a-icon&attributes(attributes)
     svg
       use(xlink:href="#icon-"+name)
+        
+mixin code(test)
+  block
+  pre
+    code.html
+      block
