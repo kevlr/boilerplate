@@ -15,7 +15,7 @@
   }
 }
 
-.l-grid-item {
+.l-grid__item {
   width: 100%;
   min-height: 1px;
 
@@ -27,11 +27,11 @@
 }
 
 @each $name, $breakpoint in $grid-breakpoints {
-  $suffix: if($breakpoint == 0, '', '-#{$name}');
+  $suffix: if($breakpoint == 0, '', '_#{$name}');
 
   @include media-query($name) {
     @for $column-number from 1 through $grid-columns {
-      .l-grid-item--#{$column-number}#{$suffix} {
+      .l-grid__item--#{$column-number}#{$suffix} {
         width: 100% / $grid-columns * $column-number;
       }
     }
@@ -43,7 +43,7 @@
 
   @include media-query($name) {
     @for $column-number from 0 through $grid-columns - 1 {
-      .l-grid-item--push#{$column-number}#{$suffix} {
+      .l-grid__item--push#{$column-number}#{$suffix} {
         margin-left: 100% / $grid-columns * $column-number;
       }
     }
@@ -57,7 +57,7 @@
     }
   }
 
-  .l-grid-item {
+  .l-grid__item {
     @each $name, $gap in $grid-row-gap {
       @include media-query($name) {
         padding-top: $gap;
@@ -71,7 +71,7 @@
 }
 
 .l-grid--equalHeight {
-  .l-grid-item {
+  .l-grid__item {
     > * {
       height: 100%;
     }

@@ -1,0 +1,26 @@
+.d-layout {
+  padding-left: $sidebar-width;
+}
+
+.d-layout__main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.d-layout__section {
+  background-color: $section-color;
+  color: $font-color;
+  padding: 2rem;
+}
+
+.d-layout__wrapper {
+  max-width: 80rem;
+}
+
+.d-layout__footer {
+  flex-grow: 1;
+  background-color: $section-color;
+  color: $font-color;
+  padding: 2rem;
+}

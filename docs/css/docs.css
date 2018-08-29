@@ -1,1 +1,149 @@
 /* Settings */
+.d-code {
+  background-color: #282c34;
+  margin: 0;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.d-code .hljs {
+  color: #abb2bf;
+}
+
+.d-code .hljs-comment,
+.d-code .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.d-code .hljs-doctag,
+.d-code .hljs-keyword,
+.d-code .hljs-formula {
+  color: #c678dd;
+}
+
+.d-code .hljs-section,
+.d-code .hljs-name,
+.d-code .hljs-selector-tag,
+.d-code .hljs-deletion,
+.d-code .hljs-subst {
+  color: #e06c75;
+}
+
+.d-code .hljs-literal {
+  color: #56b6c2;
+}
+
+.d-code .hljs-string,
+.d-code .hljs-regexp,
+.d-code .hljs-addition,
+.d-code .hljs-attribute,
+.d-code .hljs-meta-string {
+  color: #98c379;
+}
+
+.d-code .hljs-built_in,
+.d-code .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+.d-code .hljs-attr,
+.d-code .hljs-variable,
+.d-code .hljs-template-variable,
+.d-code .hljs-type,
+.d-code .hljs-selector-class,
+.d-code .hljs-selector-attr,
+.d-code .hljs-selector-pseudo,
+.d-code .hljs-number {
+  color: #d19a66;
+}
+
+.d-code .hljs-symbol,
+.d-code .hljs-bullet,
+.d-code .hljs-link,
+.d-code .hljs-meta,
+.d-code .hljs-selector-id,
+.d-code .hljs-title {
+  color: #61aeee;
+}
+
+.d-code .hljs-emphasis {
+  font-style: italic;
+}
+
+.d-code .hljs-strong {
+  font-weight: bold;
+}
+
+.d-code .hljs-link {
+  text-decoration: underline;
+}
+
+.d-content h1, .d-content h2, .d-content h3, .d-content h4, .d-content h5, .d-content h6 {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  margin: 0;
+}
+
+.d-layout {
+  padding-left: 20rem;
+}
+
+.d-layout__main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.d-layout__section {
+  background-color: #fff;
+  color: #373e42;
+  padding: 2rem;
+}
+
+.d-layout__wrapper {
+  max-width: 80rem;
+}
+
+.d-layout__footer {
+  flex-grow: 1;
+  background-color: #fff;
+  color: #373e42;
+  padding: 2rem;
+}
+
+.d-preview {
+  padding: 2rem 0;
+  border-top: 0.1rem solid #e5eaef;
+}
+
+.d-sidebar {
+  background-color: #f5f7f9;
+  border-right: 0.1rem solid #e5eaef;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 20rem;
+  padding: 1.2rem;
+  color: #373e42;
+}
+
+.d-sidebar a {
+  color: inherit;
+}
+
+.d-sidebar__title {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.d-sidebar__title span {
+  font-weight: 400;
+}
+
+.d-sidebar__list {
+  list-style: none;
+  padding: 0;
+}

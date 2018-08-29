@@ -26,6 +26,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-sprite": "^1.4.0",
+    "jstransformer-markdown-it": "^2.1.0",
     "postcss-normalize": "^6.0.0",
     "webpack": "^4.16.5",
     "webpack-stream": "^5.1.1"
