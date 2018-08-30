@@ -33,13 +33,11 @@ const docs = () => {
     ])
     .pipe(plumber({ errorHandler: bounce }))
     .pipe(changed(`${path.dest}`))
-    .pipe(data(function (file) {
-      return {
-        icons: fs.readdirSync(`${path.src}/icons/`),
-        components: fs.readdirSync(`${path.src}/docs/views/components/`),
-        currentPath: file.history[0].replace(file.base, '').split('.pug')[0]
-      };
-    }))
+    .pipe(data((file) => ({
+      icons: fs.readdirSync(`${path.src}/icons/`),
+      components: fs.readdirSync(`${path.src}/docs/views/components/`),
+      currentPath: file.history[0].replace(file.base, '').split('.pug')[0]
+    })))
     .pipe(pug({
       basedir: `${path.src}/docs/views`,
       filters

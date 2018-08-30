@@ -19,7 +19,6 @@ html(lang="en")
       nav.d-sidebar
         a.d-sidebar__title(href="/") kevlr <span>docs</span>
         ul.d-sidebar__list
-          - console.log(locals)
           each component in components
             - const slug = component.split('.pug')[0]
             - const active = `/components/${slug}` === currentPath
