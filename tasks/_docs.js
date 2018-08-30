@@ -5,6 +5,7 @@ import bounce from './_bounce'
 import chalk from 'chalk'
 import changed from 'gulp-changed'
 import cssnano from 'gulp-cssnano'
+import data from 'gulp-data'
 import fs from 'fs'
 import plumber from 'gulp-plumber'
 import pug from 'gulp-pug'
@@ -16,10 +17,6 @@ const path = process.env.DOCS ? {
   src: gulpConfig.path.src,
   dest: gulpConfig.path.docs,
 } : gulpConfig.path
-const data = {
-  icons: fs.readdirSync(`${path.src}/icons/`),
-  components: fs.readdirSync(`${path.src}/docs/views/components/`)
-}
 const filters = {
   preformat(html, options) {
     const lang = options.lang || 'html'
@@ -36,9 +33,15 @@ const docs = () => {
     ])
     .pipe(plumber({ errorHandler: bounce }))
     .pipe(changed(`${path.dest}`))
+    .pipe(data(function (file) {
+      return {
+        icons: fs.readdirSync(`${path.src}/icons/`),
+        components: fs.readdirSync(`${path.src}/docs/views/components/`),
+        currentPath: file.history[0].replace(file.base, '').split('.pug')[0]
+      };
+    }))
     .pipe(pug({
       basedir: `${path.src}/docs/views`,
-      data,
       filters
     }))
     .on('error', (error) => {

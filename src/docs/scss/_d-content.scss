@@ -4,4 +4,18 @@
     font-weight: $font-bold;
     margin: 0;
   }
+
+  code {
+    background-color: $sidebar-color;
+    border: $sidebar-border;
+    font-size: 0.9em;
+    line-height: 1.3;
+    padding: .2rem .6rem;
+    border-radius: .5rem;
+    color: #d6608a;
+  }
+
+  a {
+    color: $main-color;
+  }
 }

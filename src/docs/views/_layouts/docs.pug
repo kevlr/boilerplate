@@ -19,10 +19,12 @@ html(lang="en")
       nav.d-sidebar
         a.d-sidebar__title(href="/") kevlr <span>docs</span>
         ul.d-sidebar__list
+          - console.log(locals)
           each component in components
-            - const slug = component.split('.pug')[0];
+            - const slug = component.split('.pug')[0]
+            - const active = `/components/${slug}` === currentPath
             li.d-sidebar__item
-              a.d-sidebar__link(href=`/components/${slug}.html`)= slug
+              a.d-sidebar__link(href=`/components/${slug}.html` class=active ? "is-active" : "")= slug
               
       main.d-layout__main
         block content
