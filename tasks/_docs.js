@@ -16,6 +16,18 @@ const path = process.env.DOCS ? {
   src: gulpConfig.path.src,
   dest: gulpConfig.path.docs,
 } : gulpConfig.path
+const data = {
+  icons: fs.readdirSync(`${path.src}/icons/`),
+  components: fs.readdirSync(`${path.src}/docs/views/components/`)
+}
+const filters = {
+  preformat(html, options) {
+    const lang = options.lang || 'html'
+    const preview = lang === 'html' ? `<div class="d-preview"><div class="l-wrapper">${html}</div></div>` : ''
+
+    return `${preview}<pre class="d-code"><code class="js-highlight ${lang}">${html}</code></pre>`
+  }
+}
 
 const docs = () => {
   return gulp.src([
@@ -26,10 +38,8 @@ const docs = () => {
     .pipe(changed(`${path.dest}`))
     .pipe(pug({
       basedir: `${path.src}/docs/views`,
-      data: {
-        icons: fs.readdirSync(`${path.src}/icons/`),
-        components: fs.readdirSync(`${path.src}/docs/views/components/`)
-      }
+      data,
+      filters
     }))
     .on('error', (error) => {
       console.error(chalk.red(error.message))

@@ -5,15 +5,30 @@ block content
     :markdown-it
       # Icon
       Créer votre librairie d'icones en ajoutant un fichier `.svg` dans le dosser `/src/icons` en mode `dev`. Les icones sont esuite accessibles via le code suivant en modifiant l'attribut `xlink:href` par l'icone souhaitée. Attention: toutes les icones sont préfixée par `icon-` pour ne pas créer de conflit d'`id` avec d'autres `id` présents dans la page.
-  
-  +code
-    - const example = icons[0].split('.svg')[0]
-    +icon(example)
-  
+
+  :preformat
+    <span class="a-icon">
+      <svg>
+        <use xlink:href="#icon-arrow-down"></use>
+      </svg>
+    </span>
+    
+  +content
+    :markdown-it
+      Pour une syntax plus courte, un `mixin` pug est aussi disponible:
+    
+  :preformat(lang="pug")
+    +icon('arrow-down')
+    
+  +content
+    :markdown-it
+      ## Liste des différentes icônes
+        
   .d-layout__section
     .l-grid
       each icon in icons
         - const name = icon.split('.svg')[0]
         .l-grid__item.l-grid__item--6.l-grid__item--4_S.l-grid__item--3_M.l-grid__item--2_L
-          +icon(name)
-          p= name
+          .d-example
+            +icon(name)
+            .d-example__legend= name

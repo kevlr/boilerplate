@@ -85,6 +85,19 @@
   margin: 0;
 }
 
+.d-example {
+  background: #f5f7f9;
+  border: 0.1rem solid #e5eaef;
+  border-radius: .5rem;
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+}
+
+.d-example__legend {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
 .d-layout {
   padding-left: 20rem;
 }
@@ -127,6 +140,7 @@
   width: 20rem;
   padding: 1.2rem;
   color: #373e42;
+  overflow: auto;
 }
 
 .d-sidebar a {
